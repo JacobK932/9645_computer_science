@@ -286,7 +286,7 @@ class Student():
 		self.__student_class = student_class
 		self.__date_of_birth = ""
 		self.__favourite_subject = ""
-		self.__ecas = add_
+		self.__ecas = add_eca()
 		self.__grades = []
 		self.__gpa = 0.0
 	
@@ -374,7 +374,7 @@ class Student():
 		self.__student_class = student_class
 		self.__date_of_birth = ""
 		self.__favourite_subject = ""
-		self.__ecas = add_
+		self.__ecas = add_eca()
 		self.__grades = []
 		self.__gpa = 0.0
 	
@@ -452,10 +452,76 @@ Implement getters / setters for the new properties as required.
 ---
 
 **A:**
+```python
+GRADES = {
+	"A*": 4,
+	"A": 3.2,
+	"B": 2.6,
+	"C": 1.8,
+	"D": 1.0,
+	"E": 0.2,
+	"U": 0 
+}
 
+PASSWORD = "this_is_the_password"
+
+class Student():
+	def __init__(self, student_class):
+		self.student_class = student_class # Public
+		self.date_of_birth = "" # Public
+		self.favourite_subject = "" # Public
+		self.ecas = add_eca() # Public
+		self.house = "" # First property added - Public
+		self._guardian_name = "" # Second property added - Private
+		self.__id_number = "" # Third property added - Protected
+		self.__grades = [] # Protected
+		self.__gpa = 0.0 # Protected
+	
+	def add_grade(self, grade):
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
+			else:
+				print("Invalid grade present in grades")
+		else:
+			print("Cannot add grade as maximum of 10 has been reached.")
+	
+	def add_eca(self):
+		self.__ecas += 1 # Increments ECAs
+	
+	def calculate_gpa(self):
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_guardian_name(self):
+		return self._guardian_name
+	
+	def get_id_number(self):
+		password = input("Enter Password:   ")
+		if password == PASSWORD:
+			return self.__id_number
+		else:
+			print("Invalid Password")
+	
+	def get_grades(self): 
+		password = input("Enter Password:   ")
+		if password == PASSWORD:
+			return self.__grades 
+		else:
+			print("Invalid Password")
+		
+	def get_gpa(self): 
+		password = input("Enter Password:   ")
+		if password == PASSWORD:
+			return self.__gpa
+		else:
+			print("Invalid Password")
+```
 ---
 
-*To save, share and backup your work:*
+*To save, share and back up your work:*
 
 
 ```bash
