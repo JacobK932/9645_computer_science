@@ -182,6 +182,13 @@ Create an instance of a `Student` - using yourself as an example.
 ---
 
 **A:**
+```python
+class Student():
+	def __init__(self, student_class):
+		self.__student_class = student_class
+		self.__date_of_birth = "30/10/2008"
+Jacob = Student("Jacob")
+```
 
 ---
 
