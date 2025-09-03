@@ -271,7 +271,6 @@ Create getter methods so that every property contained within a given student ca
 
 **A:**
 ```python
-
 GRADES = {
 	"A*": 4,
 	"A": 3.2,
@@ -285,29 +284,47 @@ GRADES = {
 class Student():
 	def __init__(self, student_class):
 		self.__student_class = student_class
-		self.__date_of_birth = "30/10/2008"
-		self.favourite_subject = ""
-		self.ecas = add_
-		self.grades = []
-		self.gpa = 0.0
+		self.__date_of_birth = ""
+		self.__favourite_subject = ""
+		self.__ecas = add_
+		self.__grades = []
+		self.__gpa = 0.0
 	
 	def add_grade(self, grade):
-		if len(self.grades) < 10:
-			if grade in GRADES:
-				self.grades.append(grade)
-				self.calculate_gpa()
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
 			else:
 				print("Invalid grade present in grades")
 		else:
 			print("Cannot add grade as maximum of 10 has been reached.")
 	
 	def add_eca(self):
-		self.ecas += 1
+		self.__ecas += 1 # Increments ECAs
 	
 	def calculate_gpa(self):
-		if self.grades:
-			self.gpa = round(sum(GRADES[grade] for grade in self.grades if grade in GRADES) / len(self.grades), 1)
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_student_class(self): 
+		return self.__student_class 
+	
+	def get_date_of_birth(self): 
+		return self.__date_of_birth 
 		
+	def get_favourite_subject(self): 
+		return self.__favourite_subject 
+		
+	def get_ecas(self): 
+		return self.__ecas 
+		
+	def get_grades(self): 
+		return self.__grades 
+		
+	def get_gpa(self): 
+		return self.__gpa
 ```
 
 ---
@@ -342,7 +359,6 @@ The GPA can be calculated by finding the point score for each grade the student 
 
 **A:**
 ```python
-
 GRADES = {
 	"A*": 4,
 	"A": 3.2,
@@ -356,30 +372,49 @@ GRADES = {
 class Student():
 	def __init__(self, student_class):
 		self.__student_class = student_class
-		self.__date_of_birth = "30/10/2008"
-		self.favourite_subject = ""
-		self.ecas = 0
-		self.grades = []
-		self.gpa = 0.0
+		self.__date_of_birth = ""
+		self.__favourite_subject = ""
+		self.__ecas = add_
+		self.__grades = []
+		self.__gpa = 0.0
 	
 	def add_grade(self, grade):
-		if len(self.grades) < 10:
-			if grade in GRADES:
-				self.grades.append(grade)
-				self.calculate_gpa()
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
 			else:
 				print("Invalid grade present in grades")
 		else:
 			print("Cannot add grade as maximum of 10 has been reached.")
 	
 	def add_eca(self):
-		self.ecas += 1
+		self.__ecas += 1 # Increments ECAs
 	
 	def calculate_gpa(self):
-		if self.grades:
-			self.gpa = round(sum(GRADES[grade] for grade in self.grades if grade in GRADES) / len(self.grades), 1)
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_student_class(self): 
+		return self.__student_class 
+	
+	def get_date_of_birth(self): 
+		return self.__date_of_birth 
 		
+	def get_favourite_subject(self): 
+		return self.__favourite_subject 
+		
+	def get_ecas(self): 
+		return self.__ecas 
+		
+	def get_grades(self): 
+		return self.__grades 
+		
+	def get_gpa(self): 
+		return self.__gpa
 ```
+
 
 ---
 
