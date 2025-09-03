@@ -1,6 +1,6 @@
 Git:
 - Git is for Version Control
-- It allows us to keep work in verstions
+- It allows us to keep work in versions
 - It saves changes as diffs 
 
 ## How to Stage, Commit and Push from Terminal:
