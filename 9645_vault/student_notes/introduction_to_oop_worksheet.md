@@ -270,6 +270,42 @@ Create getter methods so that every property contained within a given student ca
 ---
 
 **A:**
+```python
+
+GRADES = {
+	"A*": 4,
+	"A": 3.2,
+	"B": 2.6,
+	"C": 1.8,
+	"D": 1.0,
+	"E": 0.2,
+	"U": 0 
+}
+	
+class Student():
+	def __init__(self, student_class):
+		self.__student_class = student_class
+		self.__date_of_birth = "30/10/2008"
+		self.favourite_subject = ""
+		self.ecas = 0
+		self.grades = []
+		self.gpa = 0.0
+	
+	def add_grade(self, grade):
+		if len(self.grades) < 10:
+			if grade in GRADES:
+				self.grades.append(grade)
+				self.calculate_gpa()
+			else:
+				print("Invalid grade present in grades")
+		else:
+			print("Cannot add grade as maximum of 10 has been reached.")
+	
+	def calculate_gpa(self):
+		if self.grades:
+			self.gpa = round(sum(GRADES[grade] for grade in self.grades if grade in GRADES) / len(self.grades), 1)
+		
+```
 
 ---
 
