@@ -377,11 +377,11 @@ class InternationalStudent(Student):
 		self.__grade_expected_by_parent = grade_expected_by_parent
 
 # Instantiating students (I asked ChatGPT to give me really fancy and rich sounding names and generate all the properties of these people):
-Maximilian_Alexander_Thornewood_III_of_the_House_of_Valefor = InternationalStudent("12A", "2005/04/21", "International Business", ["Debate Club", "Model United Nations"], ["A", "A+", "A", "B+"], 3.9, "Yes", "British", "A+")
+Maximilian_Alexander_Thornewood_III_of_the_House_of_Valefor = InternationalStudent("12A", "2005/04/21", "International Business", ["Debate Club", "Model United Nations"], ["A", "A*", "A", "B"], 3.9, "Yes", "British", "A*")
 
-Seraphina_Arabella_Celestine_von_Silverstone_Duvalier = International_Student("11B", "2006/07/15", "Art History", ["Drama Club", "Charity Work"], ["A+", "A", "A", "A"], 4.0, "Yes", "French", "A")
+Seraphina_Arabella_Celestine_von_Silverstone_Duvalier = International_Student("11B", "2006/07/15", "Art History", ["Drama Club", "Charity Work"], ["A*", "A", "A", "A"], 4.0, "Yes", "French", "A")
 
-Isadora_Genevieve_Astoria_Montclair_de_la_Rochefort = International_Student("10C", "2007/12/09", "Environmental Science", ["Robotics Club", "Soccer Team"], ["A", "A-", "B+", "A"], 3.8, "No", "Swiss", "A")
+Isadora_Genevieve_Astoria_Montclair_de_la_Rochefort = International_Student("10C", "2007/12/09", "Environmental Science", ["Robotics Club", "Soccer Team"], ["A", "A*", "B", "A"], 3.8, "No", "Swiss", "A")
 ```
 ---
 
@@ -405,7 +405,129 @@ The `find_necessary_tutors` method iterates through the student’s grades and c
 ---
 
 **A:**
+``` python
+class Student():
+	def __init__(self, student_class):
+		self.__student_class = student_class
+		self.__date_of_birth = ""
+		self.__favourite_subject = ""
+		self.__ecas = add_eca()
+		self.__grades = []
+		self.__gpa = 0.0
+	
+	def add_grade(self, grade):
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
+			else:
+				print("Invalid grade present in grades")
+		else:
+			print("Cannot add grade as maximum of 10 has been reached.")
+	
+	# Misc. methods:
+	def add_eca(self):
+		self.__ecas += 1 # Increments ECAs
+	
+	def calculate_gpa(self):
+		GRADES = {
+			"A*": 4,
+			"A": 3.2,
+			"B": 2.6,
+			"C": 1.8,
+			"D": 1.0,
+			"E": 0.2,
+			"U": 0 }
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_student_class(self): 
+		return self.__student_class 
+	
+	def get_date_of_birth(self): 
+		return self.__date_of_birth 
+		
+	def get_favourite_subject(self): 
+		return self.__favourite_subject 
+		
+	def get_ecas(self): 
+		return self.__ecas 
+		
+	def get_grades(self): 
+		return self.__grades 
+		
+	def get_gpa(self): 
+		return self.__gpa
+	
+	# Setter methods:
+	def set_student_class(self, student_class):
+		self.__student_class = student_class
+	
+	def set_date_of_birth(self, date_of_birth):
+		self.__date_of_birth = date_of_birth
+	
+	def set_favourite_subject(self, favourite_subject):
+		self.__favourite_subject = favourite_subject
+	
+	def set_ecas(self, ecas):
+		self.__ecas = ecas
+	
+	def set_grades(self, grades):
+		self.__grades = grades
+	
+	def set_gpa(self, grades):
+		self.__gpa = gpa
 
+class InternationalStudent(Student):
+	def __init__(self, student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			super().__init__(student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			self.__fee_paid = fee_paid
+			self.__nationality = nationality
+			self.__grade_expected_by_parent = grade_expected_by_parent
+	
+	# Misc. methods:
+	def find_necessary_tutors(self, grade_expected_by_parent, grades):
+		tutor_needed = False
+		GRADES = {
+			"A*": 4,
+			"A": 3.2,
+			"B": 2.6,
+			"C": 1.8,
+			"D": 1.0,
+			"E": 0.2,
+			"U": 0 }
+		for grade in grades:
+			if GRADES[grade_expected_by_parent] > GRADES[grade]:
+				t
+	
+	# Getter methods:
+	def get_fee_paid(self):
+		return __get_fee_paid
+	
+	def get_nationality(self):
+		return __nationality
+	
+	def get_grade_expected_by_parent(self):
+		return __grade_expected_by_parent
+	
+	# Setter methods:
+	def set_fee_paid(self, fee_paid):
+		self.__fee_paid = fee_paid
+	
+	def set_nationality(self, nationality):
+		self.__nationality = nationality
+	
+	def set_grade_expected_by_parent(self, grade_expected_by_parent):
+		self.__grade_expected_by_parent = grade_expected_by_parent
+
+# Instantiating students (I asked ChatGPT to give me really fancy and rich sounding names and generate all the properties of these people):
+Maximilian_Alexander_Thornewood_III_of_the_House_of_Valefor = InternationalStudent("12A", "2005/04/21", "International Business", ["Debate Club", "Model United Nations"], ["A", "A*", "A", "B"], 3.9, "Yes", "British", "A*")
+
+Seraphina_Arabella_Celestine_von_Silverstone_Duvalier = International_Student("11B", "2006/07/15", "Art History", ["Drama Club", "Charity Work"], ["A*", "A", "A", "A"], 4.0, "Yes", "French", "A")
+
+Isadora_Genevieve_Astoria_Montclair_de_la_Rochefort = International_Student("10C", "2007/12/09", "Environmental Science", ["Robotics Club", "Soccer Team"], ["A", "A*", "B", "A"], 3.8, "No", "Swiss", "A")
+```
 ---
 
 *To save, share and backup your work:*
