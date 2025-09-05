@@ -375,6 +375,13 @@ class InternationalStudent(Student):
 	
 	def set_grade_expected_by_parent(self, grade_expected_by_parent):
 		self.__grade_expected_by_parent = grade_expected_by_parent
+
+# Instantiating students (I asked ChatGPT to give me really fancy and rich sounding names and generate all the properties of these people):
+Maximilian_Alexander_Thornewood_III_of_the_House_of_Valefor = InternationalStudent("12A", "2005/04/21", "International Business", ["Debate Club", "Model United Nations"], ["A", "A+", "A", "B+"], 3.9, "Yes", "British", "A+")
+
+Seraphina_Arabella_Celestine_von_Silverstone_Duvalier = International_Student("11B", "2006/07/15", "Art History", ["Drama Club", "Charity Work"], ["A+", "A", "A", "A"], 4.0, "Yes", "French", "A")
+
+Isadora_Genevieve_Astoria_Montclair_de_la_Rochefort = International_Student("10C", "2007/12/09", "Environmental Science", ["Robotics Club", "Soccer Team"], ["A", "A-", "B+", "A"], 3.8, "No", "Swiss", "A")
 ```
 ---
 
