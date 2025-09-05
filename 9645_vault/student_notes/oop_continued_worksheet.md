@@ -152,6 +152,107 @@ Create a new class named `InternationalStudent` that inherits from your `Student
 ---
 
 **A:**
+``` python	
+class Student():
+	def __init__(self, student_class):
+		self.__student_class = student_class
+		self.__date_of_birth = ""
+		self.__favourite_subject = ""
+		self.__ecas = add_eca()
+		self.__grades = []
+		self.__gpa = 0.0
+	
+	def add_grade(self, grade):
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
+			else:
+				print("Invalid grade present in grades")
+		else:
+			print("Cannot add grade as maximum of 10 has been reached.")
+	
+	# Misc. methods:
+	def add_eca(self):
+		self.__ecas += 1 # Increments ECAs
+	
+	def calculate_gpa(self):
+		GRADES = {
+			"A*": 4,
+			"A": 3.2,
+			"B": 2.6,
+			"C": 1.8,
+			"D": 1.0,
+			"E": 0.2,
+			"U": 0 }
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_student_class(self): 
+		return self.__student_class 
+	
+	def get_date_of_birth(self): 
+		return self.__date_of_birth 
+		
+	def get_favourite_subject(self): 
+		return self.__favourite_subject 
+		
+	def get_ecas(self): 
+		return self.__ecas 
+		
+	def get_grades(self): 
+		return self.__grades 
+		
+	def get_gpa(self): 
+		return self.__gpa
+	
+	# Setter methods:
+	def set_student_class(self, student_class):
+		self.__student_class = student_class
+	
+	def set_date_of_birth(self, date_of_birth):
+		self.__date_of_birth = date_of_birth
+	
+	def set_favourite_subject(self, favourite_subject):
+		self.__favourite_subject = favourite_subject
+	
+	def set_ecas(self, ecas):
+		self.__ecas = ecas
+	
+	def set_grades(self, grades):
+		self.__grades = grades
+	
+	def set_gpa(self, grades):
+		self.__gpa = gpa
+
+class InternationalStudent(Student):
+	def __init__(self, student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			super().__init__(student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			self.__fee_paid = fee_paid
+			self.__nationality = nationality
+			self.__grade_expected_by_parent = grade_expected_by_parent
+	
+	# Getter methods:
+	def get_fee_paid(self):
+		return __get_fee_paid
+	
+	def get_nationality(self):
+		return __nationality
+	
+	def get_grade_expected_by_parent(self):
+		return __grade_expected_by_parent
+	
+	# Setter methods:
+	def set_fee_paid(self, fee_paid):
+		self.__fee_paid = fee_paid
+	
+	def set_nationality(self, nationality):
+		self.__nationality = nationality
+	
+	def set_grade_expected_by_parent(self, grade_expected_by_parent):
+		self.__grade_expected_by_parent = grade_expected_by_parent
+```
 
 ---
 
@@ -174,7 +275,107 @@ Instantiate three `InternationalStudent` objects and set their default propertie
 ---
 
 **A:**
+``` python	
+class Student():
+	def __init__(self, student_class):
+		self.__student_class = student_class
+		self.__date_of_birth = ""
+		self.__favourite_subject = ""
+		self.__ecas = add_eca()
+		self.__grades = []
+		self.__gpa = 0.0
+	
+	def add_grade(self, grade):
+		if len(self.__grades) < 10: # Ensure list is not too big already
+			if grade in GRADES: # If invalid grade is entered
+				self.__grades.append(grade)
+				self.calculate_gpa() # Call calculation function
+			else:
+				print("Invalid grade present in grades")
+		else:
+			print("Cannot add grade as maximum of 10 has been reached.")
+	
+	# Misc. methods:
+	def add_eca(self):
+		self.__ecas += 1 # Increments ECAs
+	
+	def calculate_gpa(self):
+		GRADES = {
+			"A*": 4,
+			"A": 3.2,
+			"B": 2.6,
+			"C": 1.8,
+			"D": 1.0,
+			"E": 0.2,
+			"U": 0 }
+		if self.__grades:
+			self.__gpa = round(sum(GRADES[grade] for grade in self.__grades if grade in GRADES) / len(self.__grades), 1)
+	
+	# Getter methods:
+	def get_student_class(self): 
+		return self.__student_class 
+	
+	def get_date_of_birth(self): 
+		return self.__date_of_birth 
+		
+	def get_favourite_subject(self): 
+		return self.__favourite_subject 
+		
+	def get_ecas(self): 
+		return self.__ecas 
+		
+	def get_grades(self): 
+		return self.__grades 
+		
+	def get_gpa(self): 
+		return self.__gpa
+	
+	# Setter methods:
+	def set_student_class(self, student_class):
+		self.__student_class = student_class
+	
+	def set_date_of_birth(self, date_of_birth):
+		self.__date_of_birth = date_of_birth
+	
+	def set_favourite_subject(self, favourite_subject):
+		self.__favourite_subject = favourite_subject
+	
+	def set_ecas(self, ecas):
+		self.__ecas = ecas
+	
+	def set_grades(self, grades):
+		self.__grades = grades
+	
+	def set_gpa(self, grades):
+		self.__gpa = gpa
 
+class InternationalStudent(Student):
+	def __init__(self, student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			super().__init__(student_class, date_of_birth, favourite_subject, ecas, grades, gpa)
+			self.__fee_paid = fee_paid
+			self.__nationality = nationality
+			self.__grade_expected_by_parent = grade_expected_by_parent
+	
+	# Getter methods:
+	def get_fee_paid(self):
+		return __get_fee_paid
+	
+	def get_nationality(self):
+		return __nationality
+	
+	def get_grade_expected_by_parent(self):
+		return __grade_expected_by_parent
+	
+	# Setter methods:
+	def set_fee_paid(self, fee_paid):
+		self.__fee_paid = fee_paid
+	
+	def set_nationality(self, nationality):
+		self.__nationality = nationality
+	
+	def set_grade_expected_by_parent(self, grade_expected_by_parent):
+		self.__grade_expected_by_parent = grade_expected_by_parent
+```
 ---
 
 *To save, share and backup your work:*
